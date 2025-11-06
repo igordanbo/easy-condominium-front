@@ -1,18 +1,18 @@
-import { Outlet } from "react-router-dom"
-import MainContainer from "../../components/MainContainer"
-import Header from "../../components/Header"
-import Menu from "../../components/Menu"
+import { Outlet } from "react-router-dom";
+
+import Header from "../../components/Header";
+import MainContainer from "../../components/MainContainer";
+import Sidebar from "../../components/Sidebar";
+import Loader from "../../components/Loader";
 
 export default function Template() {
-
-    return (
-        <div>
-            <Header/>
-            <Menu/>
-            <MainContainer>
-                <Outlet />
-            </MainContainer>
-        </div>
-    )
-
+  return (
+    <>
+      <Sidebar />
+      <Header />
+      <MainContainer>
+        <Outlet />
+      </MainContainer>
+    </>
+  );
 }
