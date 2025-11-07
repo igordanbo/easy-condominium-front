@@ -7,7 +7,7 @@ export function useLoading() {
 }
 
 export function LoadingProvider({ children }) {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const showLoading = () => setIsLoading(true);
   const hideLoading = () => setIsLoading(false);

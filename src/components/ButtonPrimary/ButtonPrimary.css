@@ -1,0 +1,15 @@
+.easy-button-primary{
+    background-color: var(--accent-color);
+    color: #fff;
+    border: none;
+    outline: none;
+    padding: 12px 20px;
+    margin: 0;
+    font-size: 16px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.easy-button-primary:hover{
+    opacity: .5;
+}

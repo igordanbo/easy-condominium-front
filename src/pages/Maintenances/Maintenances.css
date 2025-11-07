@@ -1,0 +1,13 @@
+.easy-header-lists-page {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.easy-header-lists-page .easy-title-lists {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
