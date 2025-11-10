@@ -1,0 +1,144 @@
+.easy-section-main-view-maintenance {
+  position: relative;
+}
+
+.easy-box-title-inner-pages {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.easy-box-title-inner-pages .easy-back-prev-page {
+  display: flex;
+  border: solid 2px #d9d9d9;
+  align-items: center;
+  padding: 8px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.easy-box-title-inner-pages .easy-back-prev-page:hover {
+  opacity: 0.5;
+}
+
+.easy-section-main-view-maintenance .easy-small-title {
+  opacity: 0.4;
+}
+
+.easy-section-main-view-maintenance h1 {
+  display: flex;
+  gap: 16px;
+}
+
+.easy-section-main-view-maintenance h1 span {
+  background-color: #d9d9d965;
+  border-radius: 10px;
+  padding: 6px 12px;
+  font-size: 24px;
+  color: #00000030;
+}
+
+.easy-section-main-view-maintenance .easy-main-info-content-view-maintenance {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.easy-section-main-view-maintenance
+  .easy-main-info-content-view-maintenance
+  .easy-box-single-info-view-maintenance {
+  display: flex;
+  flex-direction: column;
+
+  gap: 12px;
+  padding: 12px;
+  border-radius: 12px;
+  max-width: 100%;
+
+  background-color: #d9d9d965;
+}
+
+.easy-box-single-info-view-maintenance .easy-box-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.easy-box-single-info-view-maintenance .easy-box-status .easy-agendado {
+  border: solid 2px var(--warning);
+  color: #ac7817;
+  background-color: #ffe4b373;
+  width: max-content;
+  padding: 8px 12px;
+  border-radius: 100px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.easy-box-single-info-view-maintenance .easy-box-status .easy-concluida {
+  border: solid 2px var(--success);
+  color: var(--success);
+  background-color: #d2ffce73;
+  width: max-content;
+  padding: 8px 12px;
+  border-radius: 100px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.easy-options-status-view-maintenance {
+  background-color: #d9d9d9;
+  padding: 12px;
+  border-radius: 10px;
+  display: flex;
+  gap: 8px;
+  width: max-content;
+}
+
+.easy-options-status-view-maintenance a {
+  padding: 5px;
+}
+.easy-options-status-view-maintenance a svg {
+  top: 0;
+}
+
+.easy-options-condos-view-maintenance {
+  background-color: #d9d9d9;
+  padding: 12px;
+  border-radius: 10px;
+  display: flex;
+  gap: 8px;
+  width: max-content;
+}
+
+.easy-section-main-view-maintenance
+  .easy-main-info-content-view-maintenance
+  .easy-box-single-info-view-maintenance
+  label {
+  font-size: 16px;
+  opacity: 0.5;
+}
+
+.easy-section-main-view-maintenance
+  .easy-main-info-content-view-maintenance
+  .easy-box-single-info-view-maintenance
+  p {
+  font-size: 24px;
+}
+
+.MuiDataGrid-cell a {
+  margin-top: 8px;
+}
+
+/*OPTIONS*/
+.easy-box-options-view-maintenance{
+  display: flex;
+  gap: 12px;
+}
+
+.easy-box-options-view-maintenance a{
+  font-size: 20px;
+  padding: 12px 24px;
+
+}

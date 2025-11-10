@@ -1,0 +1,46 @@
+.easy-link-primary{
+    background-color: var(--accent-color);
+    color: #fff;
+    border: none;
+    outline: none;
+    padding: 5px;
+    margin: 0;
+    font-size: 16px;
+    border-radius: 12px;
+    
+    cursor: pointer;
+    text-decoration: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    gap: 8px;
+}
+
+.easy-link-primary:hover{
+    opacity: .5;
+}
+
+.easy-link-primary svg{
+    position: relative;
+    fill: #fff;
+}
+
+.easy-link-primary-success{
+    background-color: var(--success);
+}
+
+.easy-link-primary-danger{
+    background-color: var(--danger);
+}
+
+.easy-link-primary-outlined{
+    background-color: transparent;
+    color: var(--color);
+    border: solid 2px #d9d9d9;
+}
+
+.easy-link-primary-outlined svg{
+    fill: #c0c0c0;
+}

@@ -1,26 +1,35 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LoadingProvider } from "./context/LoadingContext";
 import { MenuProvider } from "./context/MenuContext";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+
+import Loader from "./components/Loader";
 
 import Template from "./pages/Template";
 import Dashboard from "./pages/Dashboard";
+
 import Maintenances from "./pages/Maintenances";
-import Loader from "./components/Loader";
+import ViewMaintenance from "./pages/Maintenances/View";
 
 function App() {
   return (
     <>
       <LoadingProvider>
         <MenuProvider>
-          <Loader />
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Template />}>
-                <Route index element={<Dashboard />} />
-                <Route path="/manutencoes" element={<Maintenances />} />
-              </Route>
-            </Routes>
-          </BrowserRouter>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <Loader />
+            <BrowserRouter>
+              <Routes>
+                <Route path="/" element={<Template />}>
+                  <Route index element={<Dashboard />} />
+
+                  <Route path="/manutencoes" element={<Maintenances />} />
+                  <Route path="/manutencao/:id" element={<ViewMaintenance />} />
+                </Route>
+              </Routes>
+            </BrowserRouter>
+          </LocalizationProvider>
         </MenuProvider>
       </LoadingProvider>
     </>
