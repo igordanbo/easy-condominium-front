@@ -1,0 +1,8 @@
+.container-table-item-empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 10px;
+  border: solid 1px #d9d9d9;
+  color: #00000030;
+}

@@ -1,0 +1,14 @@
+.badge-render-status {
+  padding: 5px 15px;
+  border-radius: 16px;
+}
+
+.badge-render-status-agendada {
+  border: solid 1px var(--warning);
+  color: var(--warning);
+}
+
+.badge-render-status-concluida {
+  border: solid 1px var(--success);
+  color: var(--success);
+}

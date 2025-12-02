@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useLocation, Link } from "react-router-dom";
 
 import PersonSearchIcon from "@mui/icons-material/PersonSearch";
 import LineAxisIcon from "@mui/icons-material/LineAxis";
@@ -22,6 +23,9 @@ export default function Sidebar() {
 
   const [active, setActive] = useState("dashboard");
 
+  const location = useLocation();
+  const currentPath = location.pathname;
+
   const toggleMenu = () => {
     if (menuIsOpen) hideMenu();
     else showMenu();
@@ -30,41 +34,53 @@ export default function Sidebar() {
   const menuItems = [
     {
       id: "dashboard",
+      path: "/",
       label: "Dashboard",
       icon: <LineAxisIcon />,
       badge: false,
     },
     {
       id: "users",
+      path: "/usuarios",
       label: "Usuários",
       icon: <PersonSearchIcon />,
       badge: false,
     },
     {
       id: "condos",
+      path: "/condominios",
       label: "Condomínios",
       icon: <WorkspacesIcon />,
       badge: false,
     },
     {
       id: "maintenance",
+      path: "/manutencoes",
       label: "Manutenções",
       icon: <HandymanIcon />,
       badge: false,
     },
     {
       id: "admins",
+      path: "/administradores",
       label: "Administradores",
       icon: <AdminPanelSettingsIcon />,
       badge: false,
     },
     {
       id: "settings",
+      path: "/configuracoes",
       label: "Configurações",
       icon: <SettingsSuggestIcon />,
       badge: false,
     },
-    { id: "api", label: "Easy API", icon: <ApiIcon />, badge: true },
+    {
+      id: "api",
+      path: "/api",
+      label: "Easy API",
+      icon: <ApiIcon />,
+      badge: true,
+    },
     {
       id: "public-area",
       label: "Área pública",
@@ -147,11 +163,11 @@ export default function Sidebar() {
         <ul>
           {menuItems.map((item) => (
             <li key={item.id}>
-              <button
+              <Link
+                to={`${item.path}`}
                 className={`sidebar-menu-item ${
-                  active === item.id ? "sidebar-active" : ""
+                  currentPath === item.path ? "sidebar-active" : ""
                 }`}
-                onClick={() => setActive(item.id)}
               >
                 <span className="sidebar-icon">{item.icon}</span>
                 <span
@@ -170,7 +186,7 @@ export default function Sidebar() {
                     Novo
                   </span>
                 )}
-              </button>
+              </Link>
             </li>
           ))}
         </ul>

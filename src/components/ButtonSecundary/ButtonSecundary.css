@@ -1,0 +1,21 @@
+.easy-button-secundary {
+  color: #00000080;
+  border: solid 2px var(--border-color);
+  outline: none;
+  padding: 10px 20px;
+  margin: 0;
+  font-size: 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  max-width: max-content;
+}
+
+.easy-button-secundary:hover {
+  opacity: 0.5;
+}
+
+.easy-button-secundary-disable {
+  opacity: 0.3;
+  cursor: not-allowed;
+  pointer-events: none;
+}

@@ -1,0 +1,19 @@
+.container-module-title-clip{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.container-module-title-clip svg{
+    width: 32px;
+    background-color: #d9d9d980;
+    padding: 12px;
+    border-radius: 16px;
+    fill: #00000020;
+}
+
+.container-module-title-clip h2{
+    font-size: 32px;
+    font-weight: 500;
+}

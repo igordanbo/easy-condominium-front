@@ -32,6 +32,7 @@
   border: none;
   cursor: pointer;
   font-size: 20px;
+  
 }
 
 .sidebar-menu ul {
@@ -41,7 +42,7 @@
 }
 
 .sidebar-menu-item {
-  width: 100%;
+  
   background: none;
   border: none;
   display: flex;
@@ -51,6 +52,7 @@
   margin: 0 0 5px 0;
   border-radius: 16px;
   cursor: pointer;
+  text-decoration: none;
   transition: background 0.2s ease, color 0.2s ease;
 }
 
@@ -59,11 +61,11 @@
 }
 
 .sidebar-menu-item:hover {
-  background-color: #dddddd1a;
+  background-color: #dddddd50;
 }
 
 .sidebar-menu-item.sidebar-active {
-  background-color: hsl(285, 100%, 97%);
+  background-color: hsl(284, 100%, 96%);
   color: #fff;
 }
 

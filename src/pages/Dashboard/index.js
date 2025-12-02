@@ -1,9 +1,9 @@
-import GridChartsIntegrationRowGrouping from '../../components/GridChartsIntegrationRowGrouping'
+import GridDashboard from "../../components/GridDashboard";
+import { useLoading } from "../../context/LoadingContext";
+import api from "../../utils/api";
 
 export default function Dashboard() {
-  return <section>
-    <div className="easy-grid-dashboard">
-        <GridChartsIntegrationRowGrouping/>
-    </div>
-  </section>;
+  const { showLoading, hideLoading } = useLoading();
+
+  return <GridDashboard />;
 }

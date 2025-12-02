@@ -1,0 +1,41 @@
+.container-table-item {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  align-items: center;
+  padding: 10px 24px;
+  border: solid 1px #d9d9d9;
+  transition: .2s;
+  position: relative;
+}
+
+.container-table-item:hover {
+    background-color: #00000010;
+    border-left: solid 6px var(--accent-color);
+    transition: .2s;
+}
+
+
+.actions-table-content {
+    position: absolute;
+    right: 10px;
+}
+
+.action-table-item-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.action-table-item-button:hover{
+    opacity: .5;
+}
+
+.action-view-table-item-button {
+    background-color: var(--accent-color);
+}

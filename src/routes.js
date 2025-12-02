@@ -25,7 +25,7 @@ function App() {
                   <Route index element={<Dashboard />} />
 
                   <Route path="/manutencoes" element={<Maintenances />} />
-                  <Route path="/manutencao/:id" element={<ViewMaintenance />} />
+                  <Route path="/manutencoes/manutencao/:id" element={<ViewMaintenance />} />
                 </Route>
               </Routes>
             </BrowserRouter>

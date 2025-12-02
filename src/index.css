@@ -5,7 +5,9 @@
   --success: #45be72;
   --danger: #be4545;
   --warning: #be8a45;
+  --info: #5289d1;
   --color: #344054;
+  --border-color: #d9d9d9;
 }
 
 * {

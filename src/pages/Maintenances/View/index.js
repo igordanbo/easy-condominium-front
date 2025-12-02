@@ -22,6 +22,7 @@ export default function ViewMaintenance() {
 
   const { showLoading, hideLoading } = useLoading();
   const [showScheduleModal, setShowScheduleModal] = useState(false);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [maintenance, setMaintenance] = useState([]);
   const [selectedDate, setSelectedDate] = useState(null);
 
@@ -187,6 +188,28 @@ export default function ViewMaintenance() {
                 <DatePicker onDateChange={handleDateChange} />
               </>
             }
+            confirmModal={true}
+            cancelModal={true}
+            typeModal={"info"}
+            onClickConfirmModal={() => {
+              setShowConfirmModal(true);
+              setShowScheduleModal(false);
+            }}
+            onClickCancelModal={() => {
+              setShowScheduleModal(false);
+            }}
+          />
+        ) : (
+          ""
+        )}
+
+        {showConfirmModal ? (
+          <Modal
+            titleModal={"Concluir manutenção"}
+            contentModal={<>
+              <p>Confirma a data de conclusão da manutenção?</p>
+              <p>Data selecionada: {selectedDate}</p>
+            </>}
             confirmModal={true}
             cancelModal={true}
             typeModal={"info"}
