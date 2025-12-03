@@ -13,6 +13,10 @@ import Maintenances from "./pages/Maintenances";
 import ViewMaintenance from "./pages/Maintenances/View";
 import AddMaintenance from "./pages/Maintenances/Add";
 
+import Condos from "./pages/Condos";
+import ViewCondo from "./pages/Condos/View";
+import AddCondo from "./pages/Condos/Add";
+
 function App() {
   return (
     <>
@@ -26,8 +30,25 @@ function App() {
                   <Route index element={<Dashboard />} />
 
                   <Route path="/manutencoes" element={<Maintenances />} />
-                  <Route path="/manutencoes/manutencao/:id" element={<ViewMaintenance />} />
-                  <Route path="/manutencoes/nova-manutencao" element={<AddMaintenance />} />
+
+                  <Route
+                    path="/manutencoes/manutencao/:id"
+                    element={<ViewMaintenance />}
+                  />
+                  <Route
+                    path="/manutencoes/nova-manutencao"
+                    element={<AddMaintenance />}
+                  />
+
+                  <Route path="/condominios" element={<Condos />} />
+                  <Route
+                    path="/condominios/condominio/:id"
+                    element={<ViewCondo />}
+                  />
+                  <Route
+                    path="/condominios/novo-condominio"
+                    element={<AddCondo />}
+                  />
                 </Route>
               </Routes>
             </BrowserRouter>

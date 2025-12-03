@@ -5,14 +5,14 @@ export default function ButtonPrimary({
   addClass,
   title,
   onClick,
-  disable,
+  disabled,
 }) {
   return (
     <button
-      className={`easy-button-primary easy-button-primary-${addClass}`}
+      className={`easy-button-primary easy-button-primary-${addClass} disabled-${disabled}`}
       title={title}
       onClick={onClick}
-      disable={disable}
+      disabled={disabled}
     >
       {children}
     </button>

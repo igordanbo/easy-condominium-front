@@ -18,3 +18,9 @@
 .easy-button-primary-success{
     background-color: var(--success);
 }
+
+.disabled-false{
+    background-color: #00000030;
+    cursor: not-allowed;
+    pointer-events: none;
+}

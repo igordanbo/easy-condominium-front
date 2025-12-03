@@ -1,16 +1,20 @@
-.container-custom-select{
+.easy-container-custom-input{
     display: flex;
     flex-direction: column;
     gap: 8px;
     width: 100%;
-    max-width: 500px;
+    max-width: 472px;
 }
 
-.container-custom-select select{
+.easy-container-custom-input input{
     width: 100%;
     padding: 8px 12px;
     border: 2px solid #d9d9d9;
     border-radius: 12px;
     font-size: 16px;
     outline: none;
+}
+
+.easy-required-custom-input{
+    color: #af1616
 }

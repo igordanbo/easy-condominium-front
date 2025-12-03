@@ -12,3 +12,8 @@
   border: solid 1px var(--success);
   color: var(--success);
 }
+
+.badge-render-status-cancelada {
+  border: solid 1px var(--danger);
+  color: var(--danger);
+}

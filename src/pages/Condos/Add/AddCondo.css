@@ -1,0 +1,5 @@
+.easy-container-add-condos{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
