@@ -16,28 +16,29 @@ import Modal from "../../../components/Modal";
 import DatePicker from "../../../components/DatePicker";
 
 export default function ViewMaintenance() {
-  const params = useParams();
+  const { id } = useParams();
   const navigate = useNavigate();
-  const idParam = params.id;
-
   const { showLoading, hideLoading } = useLoading();
+
   const [showScheduleModal, setShowScheduleModal] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
-  const [maintenance, setMaintenance] = useState([]);
+  const [maintenance, setMaintenance] = useState(null);
   const [selectedDate, setSelectedDate] = useState(null);
 
   const handleDateChange = (date) => {
-    setSelectedDate(date);
+    const d = new Date();
+    const todayBr = d.toLocaleDateString("pt-BR"); 
+    setSelectedDate(date || todayBr);
   };
 
   useEffect(() => {
+    if (!id) return;
+
     const fetchData = async () => {
       try {
         showLoading();
-        const response = await api.get(`manutencaos/${idParam}`);
-        const data = response.data;
-
-        setMaintenance(data);
+        const response = await api.get(`manutencaos/${id}`);
+        setMaintenance(response.data);
       } catch (err) {
         console.error(err);
       } finally {
@@ -46,182 +47,170 @@ export default function ViewMaintenance() {
     };
 
     fetchData();
-  }, [idParam]);
+  }, [id]);
 
-  if (!idParam) {
-    return;
+  const handleStatusComplete = async () => {
+      try {
+        showLoading();
+        const response = await api.put(`manutencaos/${id}`,{
+          status: "concluido",
+          data_conclusao: selectedDate.format("YYYY-MM-DD"),
+        });
+        navigate(-1)
+      } catch (err) {
+        console.error(err);
+      } finally {
+        hideLoading();
+      }
   }
+
+  if (!maintenance) return null;
 
   return (
     <section className="easy-section-main-view-maintenance">
+      {/* HEADER */}
       <div className="easy-box-title-inner-pages">
-        <div
-          className="easy-back-prev-page"
-          onClick={() => {
-            navigate(-1);
-          }}
-        >
+        <div className="easy-back-prev-page" onClick={() => navigate(-1)}>
           <ArrowBackIcon />
         </div>
+
         <div>
-          <small className="easy-small-title">Maintenções | Visualização</small>
+          <small className="easy-small-title">Manutenções | Visualização</small>
           <h1>
-            Manutenção<span>#{maintenance?.id}</span>
+            Manutenção <span>#{maintenance.id}</span>
           </h1>
         </div>
       </div>
-      <div className="easy-main-info-content-view-maintenance">
-        {maintenance?.status ? (
-          <div className="easy-box-single-info-view-maintenance">
-            {maintenance?.status === "agendado" ? (
-              <div className="easy-box-status">
-                <div className="easy-agendado">Manutenção agendada</div>
-              </div>
-            ) : (
-              ""
-            )}
 
-            {maintenance?.status === "concluido" ? (
-              <div className="easy-box-status">
-                <div className="easy-concluida">Manutenção concluída</div>
-              </div>
-            ) : (
-              ""
-            )}
+      {/* MAIN INFO */}
+      <div className="easy-main-info-content-view-maintenance">
+        {/* STATUS */}
+        {maintenance.status === "agendado" && (
+          <div className="easy-box-single-info-view-maintenance">
+            <div className="easy-box-status">
+              <div className="easy-agendado">Manutenção agendada</div>
+            </div>
           </div>
-        ) : (
-          ""
         )}
 
-        {maintenance?.tipo?.nome ? (
+        {maintenance.status === "concluido" && (
+          <div className="easy-box-single-info-view-maintenance">
+            <div className="easy-box-status">
+              <div className="easy-concluida">Manutenção concluída</div>
+            </div>
+          </div>
+        )}
+
+        {/* TIPO */}
+        {maintenance?.tipo?.nome && (
           <div className="easy-box-single-info-view-maintenance">
             <label>Tipo</label>
-            <p>{maintenance?.tipo?.nome}</p>
+            <p>{maintenance.tipo.nome}</p>
           </div>
-        ) : (
-          ""
         )}
 
-        {maintenance?.condominio?.nome ? (
+        {/* CONDOMÍNIO */}
+        {maintenance?.condominio && (
           <div className="easy-box-single-info-view-maintenance">
             <label>Condomínio</label>
-            <p>{maintenance?.condominio?.nome}</p>
+            <p>{maintenance.condominio.nome}</p>
+
             <div className="easy-options-condos-view-maintenance">
               <LinkPrimary
-                href={`https://wa.me/${maintenance?.condominio?.telefone}`}
+                href={`https://wa.me/${maintenance.condominio.telefone}`}
               >
                 <WhatsAppIcon />
               </LinkPrimary>
 
-              <LinkPrimary href={`mailto:${maintenance?.condominio?.email}`}>
+              <LinkPrimary href={`mailto:${maintenance.condominio.email}`}>
                 <AlternateEmailIcon />
               </LinkPrimary>
 
-              <LinkPrimary href={`/condominio/${maintenance?.condominio?.id}`}>
+              <LinkPrimary href={`/condominio/${maintenance.condominio.id}`}>
                 <RemoveRedEyeIcon />
               </LinkPrimary>
             </div>
           </div>
-        ) : (
-          ""
         )}
 
-        {maintenance?.data_agendada ? (
+        {/* DATAS */}
+        {maintenance.data_agendada && (
           <div className="easy-box-single-info-view-maintenance">
             <label>Data de agendamento</label>
-            <p>{maintenance?.data_agendada}</p>
+            <p>{maintenance.data_agendada}</p>
           </div>
-        ) : (
-          ""
         )}
 
-        {maintenance?.data_conclusao ? (
+        {maintenance.data_conclusao && (
           <div className="easy-box-single-info-view-maintenance">
             <label>Data de conclusão</label>
-            <p>{maintenance?.data_conclusao}</p>
+            <p>{maintenance.data_conclusao}</p>
           </div>
-        ) : (
-          ""
         )}
 
-        <div className="easy-box-options-view-maintenance">
-          {maintenance?.status === "agendado" ? (
-            <>
-              <LinkPrimary
-                addClass="success"
-                onClick={() => {
-                  setShowScheduleModal(true);
-                }}
-              >
-                Concluir
-                <CheckCircleOutlineIcon />
-              </LinkPrimary>
+        {/* AÇÕES */}
+        {maintenance.status === "agendado" && (
+          <div className="easy-box-options-view-maintenance">
+            <LinkPrimary
+              addClass="success"
+              onClick={() => setShowScheduleModal(true)}
+            >
+              Concluir <CheckCircleOutlineIcon />
+            </LinkPrimary>
 
-              <LinkPrimary
-                addClass="danger"
-                onClick={() => {
-                  alert("Adiar");
-                }}
-              >
-                Adiar <HighlightOffIcon />
-              </LinkPrimary>
+            <LinkPrimary addClass="danger" onClick={() => alert("Adiar")}>
+              Adiar <HighlightOffIcon />
+            </LinkPrimary>
 
-              <LinkPrimary
-                addClass="outlined"
-                onClick={() => {
-                  navigate(-1);
-                }}
-              >
-                Voltar <ArrowBackIcon />
-              </LinkPrimary>
-            </>
-          ) : (
-            ""
-          )}
-        </div>
+            <LinkPrimary addClass="outlined" onClick={() => navigate(-1)}>
+              Voltar <ArrowBackIcon />
+            </LinkPrimary>
+          </div>
+        )}
 
-        {showScheduleModal ? (
+        {/* MODAL — SELECIONAR DATA */}
+        {showScheduleModal && (
           <Modal
-            titleModal={"Concluir manutenção"}
-            contentModal={
-              <>
-                <DatePicker onDateChange={handleDateChange} />
-              </>
-            }
-            confirmModal={true}
-            cancelModal={true}
-            typeModal={"info"}
+            titleModal="Concluir manutenção"
+            contentModal={<DatePicker onDateChange={handleDateChange} />}
+            confirmModal
+            cancelModal
+            typeModal="info"
             onClickConfirmModal={() => {
+              if (!selectedDate) {
+                alert("Por favor, selecione uma data.");
+                return;
+              }
               setShowConfirmModal(true);
               setShowScheduleModal(false);
             }}
-            onClickCancelModal={() => {
-              setShowScheduleModal(false);
-            }}
+            onClickCancelModal={() => setShowScheduleModal(false)}
           />
-        ) : (
-          ""
         )}
 
-        {showConfirmModal ? (
+        {/* MODAL — CONFIRMAR DATA */}
+        {showConfirmModal && (
           <Modal
-            titleModal={"Concluir manutenção"}
-            contentModal={<>
-              <p>Confirma a data de conclusão da manutenção?</p>
-              <p>Data selecionada: {selectedDate}</p>
-            </>}
-            confirmModal={true}
-            cancelModal={true}
-            typeModal={"info"}
+            titleModal="Concluir manutenção"
+            contentModal={
+              <>
+                <div>Confirma a data de conclusão da manutenção?</div>
+                <div>
+                  <p>
+                    Data selecionada:{" "}
+                    <strong>{selectedDate?.format("DD/MM/YYYY")}</strong>
+                  </p>
+                </div>
+              </>
+            }
+            confirmModal
+            cancelModal
+            typeModal="info"
             onClickConfirmModal={() => {
-              alert(`Data de conclusão ${selectedDate}`);
+              handleStatusComplete();
             }}
-            onClickCancelModal={() => {
-              setShowScheduleModal(false);
-            }}
+            onClickCancelModal={() => setShowConfirmModal(false)}
           />
-        ) : (
-          ""
         )}
       </div>
     </section>

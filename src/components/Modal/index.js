@@ -25,7 +25,7 @@ export default function Modal({
         </div>
 
         <div className={`easy-modal-info-content`}>
-          <p>{contentModal}</p>
+          <div>{contentModal}</div>
         </div>
 
         <div className={`easy-modal-actions`}>

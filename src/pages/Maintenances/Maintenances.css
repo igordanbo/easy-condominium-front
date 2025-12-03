@@ -11,3 +11,10 @@
   flex-direction: column;
   gap: 12px;
 }
+
+.container-horizontal-tolls{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}

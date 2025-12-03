@@ -7,7 +7,6 @@ import renderStatus from "../../utils/renderStatus";
 import "./Maintenances.css";
 
 import ButtonPrimary from "../../components/ButtonPrimary";
-import LinkPrimary from "../../components/LinkPrimary";
 import ModuleTitleClip from "../../components/ModuleTitleClip";
 import Table from "../../components/Table";
 import TableItem from "../../components/TableItem";
@@ -55,9 +54,15 @@ export default function Maintenances() {
 
   return (
     <section>
-      {" "}
-      <div className="container-box-inner-grid-dashboard-page">
+      <div className="container-box-inner-maintenance-page">
         <ModuleTitleClip title={`Manutenções Programadas`} />
+        <div className="container-horizontal-tolls">
+          <ButtonPrimary
+            onClick={() => navigate("/manutencoes/nova-manutencao")}
+          >
+            Nova Manutenção
+          </ButtonPrimary>
+        </div>
         <Table>
           <TableHeader
             columns="5"

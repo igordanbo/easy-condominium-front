@@ -14,3 +14,7 @@
 .easy-button-primary:hover{
     opacity: .5;
 }
+
+.easy-button-primary-success{
+    background-color: var(--success);
+}

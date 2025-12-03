@@ -11,6 +11,7 @@ import Dashboard from "./pages/Dashboard";
 
 import Maintenances from "./pages/Maintenances";
 import ViewMaintenance from "./pages/Maintenances/View";
+import AddMaintenance from "./pages/Maintenances/Add";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
 
                   <Route path="/manutencoes" element={<Maintenances />} />
                   <Route path="/manutencoes/manutencao/:id" element={<ViewMaintenance />} />
+                  <Route path="/manutencoes/nova-manutencao" element={<AddMaintenance />} />
                 </Route>
               </Routes>
             </BrowserRouter>

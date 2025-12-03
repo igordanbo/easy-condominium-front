@@ -9,7 +9,7 @@ export default function ButtonPrimary({
 }) {
   return (
     <button
-      className={`easy-button-primary ${addClass}`}
+      className={`easy-button-primary easy-button-primary-${addClass}`}
       title={title}
       onClick={onClick}
       disable={disable}

@@ -40,10 +40,6 @@ export default function DatePicker({ onDateChange }) {
           />
         </Grid>
       </Grid>
-
-      <p style={{ textAlign: "center", marginTop: "1rem" }}>
-        Data selecionada: {selectedDate.format("DD/MM/YYYY")}
-      </p>
     </LocalizationProvider>
   );
 }
